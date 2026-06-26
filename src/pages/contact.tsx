@@ -23,10 +23,26 @@ export default function Contact() {
         return () => ctx.revert();
     }, []);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        // Start GSAP form transmission sequence
+        const formData = new FormData(e.currentTarget);
+        // Injecting the strictly provided Web3Forms authentication key
+        formData.append("access_key", "f6ff0a08-acb3-47ea-8fa0-6b5158b6e67c");
+        // Setting a custom subject line
+        formData.append("subject", "7pixels Agency - New Architecture Lead!");
+
+        // Fire the fetch payload to the backend server silently
+        try {
+            fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
+        } catch (error) {
+            console.error("Form Transmission Error:", error);
+        }
+
+        // Simultaneously trigger the frontend GSAP visual transmission sequence
         gsap.context(() => {
             // 1. Collapse the natural form
             gsap.to(formContainerRef.current, {
@@ -168,6 +184,9 @@ export default function Contact() {
                             <div className="absolute top-0 right-0 w-8 h-8 border-b border-l border-brandBlue/20 block pointer-events-none"></div>
 
                             <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
+                                {/* Required honeypot trick to prevent spam bots on Web3Forms */}
+                                <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     {/* Name */}
                                     <div className="flex flex-col">
@@ -175,6 +194,7 @@ export default function Contact() {
                                         <input
                                             type="text"
                                             id="name"
+                                            name="name"
                                             required
                                             className="bg-transparent border-b border-brandBlue/20 pb-2 px-2 text-brandBlue font-sans focus:outline-none focus:border-brandBlue transition-colors placeholder:text-brandBlue/30"
                                             placeholder="Your Name"
@@ -186,6 +206,7 @@ export default function Contact() {
                                         <input
                                             type="email"
                                             id="email"
+                                            name="email"
                                             required
                                             className="bg-transparent border-b border-brandBlue/20 pb-2 px-2 text-brandBlue font-sans focus:outline-none focus:border-brandBlue transition-colors placeholder:text-brandBlue/30"
                                             placeholder="hello@domain.com"
@@ -200,6 +221,7 @@ export default function Contact() {
                                         <input
                                             type="tel"
                                             id="phone"
+                                            name="phone"
                                             required
                                             className="bg-transparent border-b border-brandBlue/20 pb-2 px-2 text-brandBlue font-sans focus:outline-none focus:border-brandBlue transition-colors placeholder:text-brandBlue/30"
                                             placeholder="+1 (123) 456-7890"
@@ -212,6 +234,7 @@ export default function Contact() {
                                         <div className="relative">
                                             <select
                                                 id="plan"
+                                                name="plan"
                                                 required
                                                 defaultValue=""
                                                 className="w-full bg-transparent border-b border-brandBlue/20 pb-2 px-2 text-brandBlue font-sans focus:outline-none focus:border-brandBlue transition-colors appearance-none cursor-pointer"
@@ -235,6 +258,7 @@ export default function Contact() {
                                     <label htmlFor="details" className="font-mono text-[10px] uppercase tracking-widest text-brandBlue/60 mb-2 pl-2">Project Specifications</label>
                                     <textarea
                                         id="details"
+                                        name="details"
                                         rows={3}
                                         required
                                         className="bg-transparent border-b border-brandBlue/20 pb-2 px-2 text-brandBlue font-sans focus:outline-none focus:border-brandBlue transition-colors resize-none placeholder:text-brandBlue/30"
