@@ -195,10 +195,10 @@ The web is a living ecosystem. Browser standards change, APIs deprecate, and SEO
 articles.forEach(article => {
     const filePath = path.join(contentDirectory, article.slug + ".md");
     const fileContent = "---\n" +
-        "title: \"" + article.title + "\"\n" +
-        "date: \"" + article.date + "\"\n" +
-        "category: \"" + article.category + "\"\n" +
-        "excerpt: \"" + article.excerpt + "\"\n" +
+        "title: " + JSON.stringify(article.title) + "\n" +
+        "date: " + JSON.stringify(article.date) + "\n" +
+        "category: " + JSON.stringify(article.category) + "\n" +
+        "excerpt: " + JSON.stringify(article.excerpt) + "\n" +
         "---\n\n" +
         article.content.trim() + "\n";
     fs.writeFileSync(filePath, fileContent);

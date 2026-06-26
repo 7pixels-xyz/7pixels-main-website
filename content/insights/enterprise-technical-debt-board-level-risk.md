@@ -1,5 +1,5 @@
 ---
-title: "The "Edit Tax": Why Enterprise Technical Debt is a Board-Level Risk"
+title: "The \"Edit Tax\": Why Enterprise Technical Debt is a Board-Level Risk"
 date: "2026-06-21"
 category: "Strategy"
 excerpt: "Discover why struggling with legacy monolithic systems is no longer just an IT problem, but a strategic bottleneck bleeding marketing velocity."
