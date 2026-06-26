@@ -21,6 +21,9 @@ export default function App({ Component, pageProps }: AppProps) {
             touchMultiplier: 2,
         });
 
+        // Expose globally for Modal overlay locking
+        (window as any).lenis = lenis;
+
         lenis.on("scroll", ScrollTrigger.update);
 
         gsap.ticker.add((time) => {
@@ -31,6 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
         return () => {
             lenis.destroy();
+            delete (window as any).lenis;
             gsap.ticker.remove(lenis.raf);
         };
     }, []);

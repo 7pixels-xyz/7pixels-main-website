@@ -111,9 +111,15 @@ const CategoryModal = ({ category, onClose }: { category: MuseumCategory, onClos
         }, modalRef);
 
         document.body.style.overflow = "hidden";
+        if (typeof window !== 'undefined' && (window as any).lenis) {
+            (window as any).lenis.stop();
+        }
 
         return () => {
             document.body.style.overflow = "auto";
+            if (typeof window !== 'undefined' && (window as any).lenis) {
+                (window as any).lenis.start();
+            }
             ctx.revert();
         };
     }, []);
@@ -128,7 +134,7 @@ const CategoryModal = ({ category, onClose }: { category: MuseumCategory, onClos
     };
 
     return (
-        <div ref={modalRef} className={`fixed inset-0 z-[9999] ${category.color} overflow-y-auto overflow-x-hidden flex flex-col font-sans`}>
+        <div ref={modalRef} data-lenis-prevent="true" className={`fixed inset-0 z-[9999] ${category.color} overflow-y-auto overflow-x-hidden flex flex-col font-sans`}>
             {/* Modal Header */}
             <div className={`sticky top-0 w-full z-50 px-6 py-6 border-b flex justify-between items-center backdrop-blur-md bg-opacity-90 ${category.isDark ? 'border-cream/10 bg-[#1c2226]' : 'border-brandBlue/10 bg-[#e5e1dc]'}`}>
                 <div className="flex flex-col">
