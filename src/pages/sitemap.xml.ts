@@ -53,8 +53,8 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   // Generate the massive SEO article nodes on the server
   const posts = getAllPosts(['slug']);
 
-  // Inject the mapping logic together
-  const sitemap = generateSiteMap(posts);
+  // Inject the mapping logic together, securely casting to satisfy TS compiler
+  const sitemap = generateSiteMap(posts as { slug: string }[]);
 
   res.setHeader('Content-Type', 'text/xml');
   res.write(sitemap);
