@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
+import { useAudio } from '@/context/AudioContext';
 
 const services = ["web architecture", "e-commerce logic", "digital systems"];
 
@@ -53,6 +54,7 @@ export default function Hero() {
     const containerRef = useRef<HTMLDivElement>(null);
     const [serviceIndex, setServiceIndex] = useState(0);
     const [typedCode, setTypedCode] = useState('');
+    const { isPlaying, togglePlay } = useAudio();
 
     const fullCodeString = "export const Build = {\n  latency: '<50ms',\n  templates: 0,\n  fidelity: 'highest'\n};";
 
@@ -161,10 +163,41 @@ export default function Hero() {
                 </div>
 
                 <div className="hidden md:flex md:w-1/4 pt-4 shrink-0 flex-col gap-6 items-end text-right">
-                    <p className="font-mono text-xs uppercase tracking-[0.2em] text-brandBlue/40">
-                        System Integrity: 100%
-                    </p>
-                    <div className="h-[1px] w-full max-w-[150px] bg-brandBlue/20"></div>
+
+                    {/* Old Style Music Player Widget */}
+                    <div className="border border-brandBlue/30 bg-[#f4eff3] p-4 flex flex-col gap-3 mr-2 shadow-[4px_4px_0_0_rgba(27,63,85,0.1)] w-full max-w-[200px]">
+                        <div className="flex justify-between items-center border-b border-brandBlue/20 pb-2">
+                            <span className="font-mono text-[9px] uppercase tracking-widest text-brandBlue/70">Audio Deck v1.0</span>
+                            <div className={`w-2 h-2 rounded-full ${isPlaying ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}></div>
+                        </div>
+                        <div className="flex items-center justify-between mt-1">
+                            {/* Graphic spinning record/tape */}
+                            <div className={`w-8 h-8 rounded-full border-2 border-brandBlue/40 flex items-center justify-center ${isPlaying ? 'animate-spin' : ''}`} style={{ animationDuration: '3s' }}>
+                                <div className="w-2 h-2 rounded-full bg-brandBlue/80"></div>
+                            </div>
+                            <div className="flex flex-col items-end">
+                                <span className="font-serif text-sm text-brandBlue italic">L. Boccherini</span>
+                                <span className="font-mono text-[8px] uppercase tracking-widest text-brandBlue/50">String Quintet</span>
+                            </div>
+                        </div>
+                        <button
+                            onClick={togglePlay}
+                            className="mt-2 w-full py-1.5 border border-brandBlue/30 hover:bg-brandBlue hover:text-cream transition-colors font-mono text-[9px] uppercase tracking-[0.2em] text-brandBlue flex justify-center items-center gap-2"
+                        >
+                            {isPlaying ? (
+                                <><span>||</span> PAUSE</>
+                            ) : (
+                                <><span>▶</span> PLAY</>
+                            )}
+                        </button>
+                    </div>
+
+                    <div className="flex flex-col items-end mt-4">
+                        <p className="font-mono text-xs uppercase tracking-[0.2em] text-brandBlue/40">
+                            System Integrity: 100%
+                        </p>
+                        <div className="h-[1px] w-full max-w-[150px] bg-brandBlue/20 mt-6"></div>
+                    </div>
                 </div>
             </div>
 

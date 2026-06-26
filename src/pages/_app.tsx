@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Lenis from "lenis";
+import { AudioProvider } from "@/context/AudioContext";
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
@@ -41,5 +42,9 @@ export default function App({ Component, pageProps }: AppProps) {
         };
     }, []);
 
-    return <Component {...pageProps} />;
+    return (
+        <AudioProvider>
+            <Component {...pageProps} />
+        </AudioProvider>
+    );
 }
