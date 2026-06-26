@@ -6,6 +6,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { getPostBySlug, getAllPosts } from "@/lib/posts";
 import { marked } from "marked";
+import Link from "next/link";
 
 type SinglePost = {
     slug: string;
@@ -72,12 +73,12 @@ export default function InsightPost({ post }: { post: SinglePost }) {
                         <h3 className="font-serif text-4xl text-brandBlue mb-4">Required Architectures.</h3>
                         <p className="font-mono text-[10px] uppercase tracking-widest text-brandBlue/50 mb-8 max-w-md">Stop losing revenue to slow systems and unoptimized template builders.</p>
 
-                        <a href="/contact" className="group flex items-center justify-center gap-4 bg-brandBlue text-cream px-8 py-4 rounded-full font-mono text-xs uppercase tracking-[0.2em] hover:bg-brandBlue/90 transition-colors shadow-xl">
+                        <Link href="/contact" className="group flex items-center justify-center gap-4 bg-brandBlue text-cream px-8 py-4 rounded-full font-mono text-xs uppercase tracking-[0.2em] hover:bg-brandBlue/90 transition-colors shadow-xl">
                             <span>Initialize Consult</span>
                             <svg className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                             </svg>
-                        </a>
+                        </Link>
                     </div>
 
                 </div>
