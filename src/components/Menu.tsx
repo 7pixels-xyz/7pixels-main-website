@@ -27,7 +27,7 @@ export default function Menu() {
                     </div>
                 </div>
 
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-center mt-12 mb-20 tracking-tight">System Architecture Options</h2>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-center mt-12 mb-20 tracking-tight">Our Core Capabilities</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-0 relative border border-brandBlue/20 bg-cream/30">
 
@@ -39,29 +39,29 @@ export default function Menu() {
                     <div className="flex flex-col p-8 md:p-10 group hover:bg-brandBlue/5 transition-colors border-b border-brandBlue/20 md:border-b-0">
                         <div className="flex items-center gap-4 mb-8 border-b border-brandBlue/20 pb-4">
                             <span className="font-mono text-xs text-brandBlue/40">01</span>
-                            <h3 className="text-2xl md:text-2xl font-serif tracking-wide">Core Frameworks</h3>
+                            <h3 className="text-2xl md:text-2xl font-serif tracking-wide">Digital Foundations</h3>
                         </div>
                         <ul className="space-y-6 font-sans text-brandBlue/80">
                             <li className="flex flex-col group/item cursor-none">
                                 <div className="flex justify-between items-end border-b border-brandBlue/10 pb-1 mb-1">
-                                    <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">Headless Commerce</span>
+                                    <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">Online Stores</span>
                                     <span className="font-mono text-xs opacity-40">++</span>
                                 </div>
-                                <span className="text-sm opacity-60 font-light">Shopify Plus API, Next.js</span>
+                                <span className="text-sm opacity-60 font-light">Seamless shopping experiences</span>
                             </li>
                             <li className="flex flex-col group/item cursor-none">
                                 <div className="flex justify-between items-end border-b border-brandBlue/10 pb-1 mb-1">
-                                    <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">Bespoke Web-Apps</span>
+                                    <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">Custom Web Applications</span>
                                     <span className="font-mono text-xs opacity-40">++</span>
                                 </div>
-                                <span className="text-sm opacity-60 font-light">React, Vue, Complex State</span>
+                                <span className="text-sm opacity-60 font-light">Powerful platforms tailored to your business</span>
                             </li>
                             <li className="flex flex-col group/item cursor-none">
                                 <div className="flex justify-between items-end border-b border-brandBlue/10 pb-1 mb-1">
-                                    <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">Marketing Sites</span>
+                                    <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">Marketing Websites</span>
                                     <span className="font-mono text-xs opacity-40">++</span>
                                 </div>
-                                <span className="text-sm opacity-60 font-light">High-conversion SSG pages</span>
+                                <span className="text-sm opacity-60 font-light">Clean, fast pages designed to capture clients</span>
                             </li>
                         </ul>
                     </div>
@@ -70,7 +70,7 @@ export default function Menu() {
                     <div className="flex flex-col p-8 md:p-10 group hover:bg-brandBlue/5 transition-colors border-b border-brandBlue/20 md:border-b-0">
                         <div className="flex items-center gap-4 mb-8 border-b border-brandBlue/20 pb-4">
                             <span className="font-mono text-xs text-brandBlue/40">02</span>
-                            <h3 className="text-2xl font-serif tracking-wide">Digital Aesthetics</h3>
+                            <h3 className="text-2xl font-serif tracking-wide">Design & Experience</h3>
                         </div>
                         <ul className="space-y-6 font-sans text-brandBlue/80">
                             <li className="flex flex-col group/item cursor-none">
@@ -78,21 +78,21 @@ export default function Menu() {
                                     <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">Creative Direction</span>
                                     <span className="font-mono text-xs opacity-40">++</span>
                                 </div>
-                                <span className="text-sm opacity-60 font-light">Visual language & strategy</span>
+                                <span className="text-sm opacity-60 font-light">Crafting your unique visual identity</span>
                             </li>
                             <li className="flex flex-col group/item cursor-none">
                                 <div className="flex justify-between items-end border-b border-brandBlue/10 pb-1 mb-1">
-                                    <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">UX/UI Architecture</span>
+                                    <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">User Experience Planning</span>
                                     <span className="font-mono text-xs opacity-40">++</span>
                                 </div>
-                                <span className="text-sm opacity-60 font-light">Wireframing, prototyping</span>
+                                <span className="text-sm opacity-60 font-light">Making your website intuitive and easy to use</span>
                             </li>
                             <li className="flex flex-col group/item cursor-none">
                                 <div className="flex justify-between items-end border-b border-brandBlue/10 pb-1 mb-1">
-                                    <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">WebGL Experiences</span>
+                                    <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">Interactive Visuals</span>
                                     <span className="font-mono text-xs opacity-40">++</span>
                                 </div>
-                                <span className="text-sm opacity-60 font-light">Three.js, custom shaders</span>
+                                <span className="text-sm opacity-60 font-light">Stunning animations that engage your visitors</span>
                             </li>
                         </ul>
                     </div>
@@ -101,29 +101,29 @@ export default function Menu() {
                     <div className="flex flex-col p-8 md:p-10 group hover:bg-brandBlue/5 transition-colors">
                         <div className="flex items-center gap-4 mb-8 border-b border-brandBlue/20 pb-4">
                             <span className="font-mono text-xs text-brandBlue/40">03</span>
-                            <h3 className="text-2xl font-serif tracking-wide">Amplification</h3>
+                            <h3 className="text-2xl font-serif tracking-wide">Growth & Maintenance</h3>
                         </div>
                         <ul className="space-y-6 font-sans text-brandBlue/80">
                             <li className="flex flex-col group/item cursor-none">
                                 <div className="flex justify-between items-end border-b border-brandBlue/10 pb-1 mb-1">
-                                    <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">SEO Infrastructure</span>
+                                    <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">Search Engine Optimization</span>
                                     <span className="font-mono text-xs opacity-40">++</span>
                                 </div>
-                                <span className="text-sm opacity-60 font-light">Semantic tags, lighthouse 100</span>
+                                <span className="text-sm opacity-60 font-light">Ranking higher so clients can find you</span>
                             </li>
                             <li className="flex flex-col group/item cursor-none">
                                 <div className="flex justify-between items-end border-b border-brandBlue/10 pb-1 mb-1">
-                                    <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">Performance Tuning</span>
+                                    <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">Speed Optimization</span>
                                     <span className="font-mono text-xs opacity-40">++</span>
                                 </div>
-                                <span className="text-sm opacity-60 font-light">Asset optimization, CDNs</span>
+                                <span className="text-sm opacity-60 font-light">Lightning-fast load times for a premium feel</span>
                             </li>
                             <li className="flex flex-col group/item cursor-none">
                                 <div className="flex justify-between items-end border-b border-brandBlue/10 pb-1 mb-1">
-                                    <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">Post-Deploy Support</span>
+                                    <span className="text-lg group-hover/item:text-brandBlue transition-colors font-medium">Ongoing Site Support</span>
                                     <span className="font-mono text-xs opacity-40">++</span>
                                 </div>
-                                <span className="text-sm opacity-60 font-light">Monitoring, analytics tracking</span>
+                                <span className="text-sm opacity-60 font-light">Keeping everything secure and running smoothly</span>
                             </li>
                         </ul>
                     </div>
