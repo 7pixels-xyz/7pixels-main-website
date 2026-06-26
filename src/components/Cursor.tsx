@@ -1,0 +1,67 @@
+import React, { useEffect, useState } from 'react';
+import { motion } from 'motion/react';
+
+export default function Cursor() {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isHovered, setIsHovered] = useState(false);
+
+    useEffect(() => {
+        // We only want to run this in browser
+        if (typeof window === 'undefined') return;
+
+        const updateMousePosition = (e: MouseEvent) => {
+            setMousePosition({ x: e.clientX, y: e.clientY });
+        };
+
+        const handleMouseOver = (e: MouseEvent) => {
+            const target = e.target as HTMLElement;
+            if (
+                target.tagName.toLowerCase() === 'a' ||
+                target.tagName.toLowerCase() === 'button' ||
+                target.closest('a') ||
+                target.closest('button')
+            ) {
+                setIsHovered(true);
+            } else {
+                setIsHovered(false);
+            }
+        };
+
+        window.addEventListener('mousemove', updateMousePosition);
+        window.addEventListener('mouseover', handleMouseOver);
+
+        return () => {
+            window.removeEventListener('mousemove', updateMousePosition);
+            window.removeEventListener('mouseover', handleMouseOver);
+        };
+    }, []);
+
+    // Avoid hydration mismatch by waiting until mounted
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => setMounted(true), []);
+    if (!mounted) return null;
+
+    return (
+        <>
+            <motion.div
+                className="fixed top-0 left-0 w-2 h-2 bg-white rounded-full pointer-events-none z-[9999] transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
+                animate={{
+                    x: mousePosition.x - 4,
+                    y: mousePosition.y - 4,
+                    scale: isHovered ? 0 : 1,
+                }}
+                transition={{ type: 'tween', ease: 'backOut', duration: 0.15 }}
+            />
+            <motion.div
+                className="fixed top-0 left-0 w-8 h-8 rounded-full border border-white pointer-events-none z-[9999] transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center mix-blend-difference"
+                animate={{
+                    x: mousePosition.x - 16,
+                    y: mousePosition.y - 16,
+                    scale: isHovered ? 1.5 : 1,
+                    backgroundColor: isHovered ? 'rgba(255, 255, 255, 0.2)' : 'transparent',
+                }}
+                transition={{ type: 'tween', ease: 'easeOut', duration: 0.2 }}
+            />
+        </>
+    );
+}

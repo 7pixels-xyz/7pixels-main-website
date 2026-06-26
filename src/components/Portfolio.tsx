@@ -1,0 +1,85 @@
+import React, { useRef, useEffect, useState } from 'react';
+import { motion } from 'motion/react';
+
+const works = [
+    { id: 1, title: 'Velocity Studio', format: 'Web App / Next.js' },
+    { id: 2, title: 'The Daily Grind', format: 'Marketing Site / GSAP' },
+    { id: 3, title: 'Botanical Echoes', format: 'E-Commerce / Shopify Headless' },
+    { id: 4, title: 'Silent Archive', format: 'Creative Direction / Architecture' },
+    { id: 5, title: 'Apex Finance', format: 'Fintech Dashboard / React' },
+];
+
+export default function Portfolio() {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [dragConstraint, setDragConstraint] = useState(0);
+
+    useEffect(() => {
+        const updateConstraints = () => {
+            if (containerRef.current) {
+                setDragConstraint(-(containerRef.current.scrollWidth - containerRef.current.offsetWidth));
+            }
+        };
+
+        updateConstraints();
+        window.addEventListener('resize', updateConstraints);
+        return () => window.removeEventListener('resize', updateConstraints);
+    }, []);
+
+    return (
+        <section className="py-32 overflow-hidden bg-[#f4ece3] border-y border-brandBlue/10 relative">
+            <div className="px-4 md:px-24 mb-16">
+                <div className="flex items-center gap-4 mb-6">
+                    <span className="w-8 h-[1px] bg-brandBlue"></span>
+                    <span className="font-mono text-xs uppercase tracking-[0.3em] text-brandBlue/60">Execution Output</span>
+                </div>
+                <h2 className="text-5xl md:text-7xl font-serif text-brandBlue tracking-tight mb-6">View The Constructs</h2>
+                <p className="font-sans text-xl text-brandBlue/70 max-w-xl font-light leading-relaxed">
+                    Draggable horizontally. A curated selection of our finest systems, hand-crafted with architectural precision.
+                </p>
+            </div>
+
+            <div ref={containerRef} className="cursor-none active:cursor-none w-full overflow-hidden pl-4 md:pl-24 py-10">
+                <motion.div
+                    className="flex gap-8 md:gap-12 w-max pr-24"
+                    drag="x"
+                    dragConstraints={{ left: dragConstraint - 100, right: 0 }}
+                    dragElastic={0.05}
+                >
+                    {works.map((work, idx) => (
+                        <motion.div
+                            key={work.id}
+                            className={`w-[85vw] md:w-[45vw] lg:w-[35vw] h-[60vh] md:h-[65vh] flex flex-col justify-end p-8 bg-cream border border-brandBlue/20 relative flex-shrink-0 group overflow-hidden shadow-2xl shadow-brandBlue/5`}
+                            style={{
+                                borderRadius: idx % 2 === 0 ? '15px 125px 15px 125px/125px 15px 125px 15px' : '125px 15px 125px 15px/15px 125px 15px 125px',
+                            }}
+                            whileHover={{ y: -10 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        >
+                            {/* Abstract Placeholder for actual projects */}
+                            <div className="absolute inset-0 bg-cream flex items-center justify-center p-12 transition-transform duration-700 ease-in-out group-hover:scale-105">
+                                <div className="w-full h-full border border-brandBlue/10 flex items-center justify-center relative overflow-hidden bg-white/30 organic-border">
+                                    <div className="absolute inset-x-0 top-1/2 h-[1px] bg-brandBlue/10"></div>
+                                    <div className="absolute inset-y-0 left-1/2 w-[1px] bg-brandBlue/10"></div>
+                                    <span className="font-mono text-brandBlue/20 text-[10px] tracking-[0.3em] uppercase bg-cream px-3 py-1 z-10 block border border-brandBlue/10">
+                                        Img_Src_{idx + 1}.avif
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Text overlay bottom */}
+                            <div className="relative z-20 bg-cream/95 backdrop-blur-md border border-brandBlue/20 p-6 organic-border w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 shadow-xl shadow-brandBlue/5">
+                                <div className="flex justify-between items-start mb-2">
+                                    <h3 className="text-3xl lg:text-4xl font-serif text-brandBlue leading-none">{work.title}</h3>
+                                    <span className="font-mono text-brandBlue italic text-lg opacity-40">0{idx + 1}</span>
+                                </div>
+                                <div className="border-t border-brandBlue/10 pt-3 mt-4">
+                                    <span className="text-xs font-mono tracking-[0.2em] uppercase text-brandBlue/60">{work.format}</span>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </div>
+        </section>
+    );
+}

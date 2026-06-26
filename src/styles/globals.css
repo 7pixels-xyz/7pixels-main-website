@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-cream: #f5efe8;
+  --brand-blue: #1b3f55;
+  --accent-light: rgba(27, 63, 85, 0.1);
+}
+
+body {
+  background-color: var(--bg-cream);
+  color: var(--brand-blue);
+  /* Hide cursor globally for custom cursor */
+  cursor: none;
+}
+
+::-moz-selection {
+  background: var(--brand-blue);
+  color: var(--bg-cream);
+}
+
+::selection {
+  background: var(--brand-blue);
+  color: var(--bg-cream);
+}
+
+/* Base interactive elements */
+a, button {
+  cursor: none;
+}
+
+/* Subtle organic border utilities */
+.organic-border {
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+
+/* Receipt edge */
+.receipt-edge {
+  background-image: radial-gradient(circle at 10px 0, transparent 10px, var(--bg-cream) 11px);
+  background-size: 20px 20px;
+  background-repeat: repeat-x;
+}
