@@ -3,8 +3,8 @@ import { GetServerSideProps } from "next";
 
 const URL = "https://7pixels.xyz";
 
-function generateSiteMap(posts: any[]) {
-    return `<?xml version="1.0" encoding="UTF-8"?>
+function generateSiteMap(posts: { slug: string }[]) {
+  return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <!-- Core Navigation Architecture -->
      <url>
@@ -35,34 +35,34 @@ function generateSiteMap(posts: any[]) {
 
      <!-- Dynamic B2B Insights Matrix Generation -->
      ${posts
-            .map(({ slug }) => {
-                return `
+      .map(({ slug }) => {
+        return `
        <url>
            <loc>${`${URL}/insights/${slug}`}</loc>
            <changefreq>monthly</changefreq>
            <priority>0.7</priority>
        </url>
      `;
-            })
-            .join('')}
+      })
+      .join('')}
    </urlset>
  `;
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-    // Generate the massive SEO article nodes on the server
-    const posts = getAllPosts(['slug']);
+  // Generate the massive SEO article nodes on the server
+  const posts = getAllPosts(['slug']);
 
-    // Inject the mapping logic together
-    const sitemap = generateSiteMap(posts);
+  // Inject the mapping logic together
+  const sitemap = generateSiteMap(posts);
 
-    res.setHeader('Content-Type', 'text/xml');
-    res.write(sitemap);
-    res.end();
+  res.setHeader('Content-Type', 'text/xml');
+  res.write(sitemap);
+  res.end();
 
-    return {
-        props: {},
-    };
+  return {
+    props: {},
+  };
 }
 
 // Dummy export defaulting requirement for NextJS pages routing structure
