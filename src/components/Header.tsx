@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useAudio } from '@/context/AudioContext';
+import { Music } from 'lucide-react';
 
 export default function Header() {
     const headerRef = useRef<HTMLElement>(null);
@@ -41,7 +42,7 @@ export default function Header() {
     return (
         <header
             ref={headerRef}
-            className="fixed top-6 left-1/2 transform -translate-x-1/2 z-[100] w-[90%] md:w-[60%] lg:w-[45%] h-16 bg-cream/70 backdrop-blur-xl border border-brandBlue/10 rounded-full shadow-[0_20px_40px_-10px_rgba(27,63,85,0.15)] flex flex-row items-center justify-between px-8"
+            className="fixed top-4 md:top-6 left-1/2 transform -translate-x-1/2 z-[100] w-[95%] md:w-[60%] lg:w-[45%] h-14 md:h-16 bg-cream/70 backdrop-blur-xl border border-brandBlue/10 rounded-full shadow-[0_20px_40px_-10px_rgba(27,63,85,0.15)] flex flex-row items-center justify-between px-4 md:px-8"
         >
             <Link href="/" className="group flex items-center justify-center transition-transform duration-500 hover:scale-[1.03]">
                 <Image
@@ -54,7 +55,7 @@ export default function Header() {
                 />
             </Link>
 
-            <nav className="flex items-center gap-10">
+            <nav className="flex items-center gap-4 md:gap-10">
                 {[
                     { name: 'Our Work', href: '/work' },
                     { name: 'Pricing', href: '/pricing' }
@@ -77,11 +78,7 @@ export default function Header() {
                     className="md:hidden flex items-center justify-center h-8 w-8 rounded-full border border-brandBlue/20 text-brandBlue hover:bg-brandBlue/5 transition-all duration-300"
                 >
                     {isPlaying ? (
-                        <div className="flex gap-1 h-3 items-end">
-                            <div className="w-[1.5px] h-full bg-brandBlue animate-[pulse_0.8s_ease-in-out_infinite]"></div>
-                            <div className="w-[1.5px] h-[60%] bg-brandBlue animate-[pulse_1.2s_ease-in-out_infinite]"></div>
-                            <div className="w-[1.5px] h-[80%] bg-brandBlue animate-[pulse_1s_ease-in-out_infinite]"></div>
-                        </div>
+                        <Music className="w-3.5 h-3.5 animate-pulse" />
                     ) : (
                         <svg className="w-3 h-3 ml-0.5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z" /></svg>
                     )}
