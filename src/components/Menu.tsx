@@ -29,17 +29,17 @@ export default function Menu() {
 
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-center mt-12 mb-20 tracking-tight">Our Core Capabilities</h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-0 relative border border-brandBlue/20 bg-cream/30">
+                <div className="flex overflow-x-auto md:grid md:grid-cols-3 gap-0 relative border border-brandBlue/20 bg-cream/30 snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
 
                     {/* Vertical dividers for md+ screens */}
                     <div className="hidden md:block absolute left-1/3 top-0 bottom-0 w-[1px] bg-brandBlue/20" />
                     <div className="hidden md:block absolute left-2/3 top-0 bottom-0 w-[1px] bg-brandBlue/20" />
 
                     {/* Column 1: Core Frameworks */}
-                    <div className="flex flex-col p-8 md:p-10 group hover:bg-brandBlue/5 transition-colors border-b border-brandBlue/20 md:border-b-0">
+                    <div className="flex-shrink-0 w-[85vw] md:w-auto snap-center flex flex-col p-8 md:p-10 group hover:bg-brandBlue/5 transition-colors border-r md:border-r-0 border-brandBlue/20 md:border-b-0">
                         <div className="flex items-center gap-4 mb-8 border-b border-brandBlue/20 pb-4">
                             <span className="font-mono text-xs text-brandBlue/40">01</span>
-                            <h3 className="text-2xl md:text-2xl font-serif tracking-wide">Digital Foundations</h3>
+                            <h3 className="text-2xl md:text-2xl font-serif tracking-wide whitespace-nowrap">Digital Foundations</h3>
                         </div>
                         <ul className="space-y-6 font-sans text-brandBlue/80">
                             <li className="flex flex-col group/item cursor-none">
@@ -67,10 +67,10 @@ export default function Menu() {
                     </div>
 
                     {/* Column 2: Digital Aesthetics */}
-                    <div className="flex flex-col p-8 md:p-10 group hover:bg-brandBlue/5 transition-colors border-b border-brandBlue/20 md:border-b-0">
+                    <div className="flex-shrink-0 w-[85vw] md:w-auto snap-center flex flex-col p-8 md:p-10 group hover:bg-brandBlue/5 transition-colors border-r md:border-r-0 border-brandBlue/20 md:border-b-0">
                         <div className="flex items-center gap-4 mb-8 border-b border-brandBlue/20 pb-4">
                             <span className="font-mono text-xs text-brandBlue/40">02</span>
-                            <h3 className="text-2xl font-serif tracking-wide">Design & Experience</h3>
+                            <h3 className="text-2xl font-serif tracking-wide whitespace-nowrap">Design & Experience</h3>
                         </div>
                         <ul className="space-y-6 font-sans text-brandBlue/80">
                             <li className="flex flex-col group/item cursor-none">
@@ -98,10 +98,10 @@ export default function Menu() {
                     </div>
 
                     {/* Column 3: Amplification */}
-                    <div className="flex flex-col p-8 md:p-10 group hover:bg-brandBlue/5 transition-colors">
+                    <div className="flex-shrink-0 w-[85vw] md:w-auto snap-center flex flex-col p-8 md:p-10 group hover:bg-brandBlue/5 transition-colors lg:border-r-0 border-brandBlue/20">
                         <div className="flex items-center gap-4 mb-8 border-b border-brandBlue/20 pb-4">
                             <span className="font-mono text-xs text-brandBlue/40">03</span>
-                            <h3 className="text-2xl font-serif tracking-wide">Growth & Maintenance</h3>
+                            <h3 className="text-2xl font-serif tracking-wide whitespace-nowrap">Growth & Maintenance</h3>
                         </div>
                         <ul className="space-y-6 font-sans text-brandBlue/80">
                             <li className="flex flex-col group/item cursor-none">

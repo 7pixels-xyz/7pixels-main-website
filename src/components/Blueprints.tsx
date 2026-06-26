@@ -58,26 +58,26 @@ export default function Blueprints() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 relative z-10">
+                <div className="grid grid-cols-2 gap-4 md:gap-24 relative z-10">
                     {/* Architectural center line */}
-                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-brandBlue/20 transform -translate-x-1/2"></div>
+                    <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-brandBlue/20 transform -translate-x-1/2"></div>
 
                     {blueprints.map((bp, i) => (
-                        <div key={bp.id} className={`blueprint-card flex flex-col organic-border border border-brandBlue/20 bg-white/50 backdrop-blur-sm p-8 shadow-xl shadow-brandBlue/5 ${i % 2 !== 0 ? 'md:mt-32' : ''}`}>
-                            <div className="w-full relative h-[40vh] md:h-[50vh] bg-[#fcfbfa] organic-border border border-brandBlue/10 flex items-center justify-center p-8 overflow-hidden group">
+                        <div key={bp.id} className={`blueprint-card flex flex-col organic-border border border-brandBlue/20 bg-white/50 backdrop-blur-sm p-3 md:p-8 shadow-md md:shadow-xl shadow-brandBlue/5 ${i % 2 !== 0 ? 'mt-12 md:mt-32' : ''}`}>
+                            <div className="w-full relative h-[25vh] md:h-[50vh] bg-[#fcfbfa] organic-border border border-brandBlue/10 flex items-center justify-center p-2 md:p-8 overflow-hidden group">
                                 <div className="absolute inset-0 opacity-10 bg-[radial-gradient(var(--brand-blue)_1px,transparent_1px)] [background-size:15px_15px]" />
                                 <Image
                                     src={bp.img}
                                     alt={bp.title}
                                     fill
-                                    className="object-contain p-4 mix-blend-multiply opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                                    className="object-contain p-2 md:p-4 mix-blend-multiply opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
                                 />
-                                <span className="absolute bottom-4 left-4 font-mono text-[10px] tracking-widest uppercase text-brandBlue/30 bg-cream/80 px-2 py-1">Schema_0{i + 1}.draft</span>
+                                <span className="absolute bottom-2 left-2 md:bottom-4 md:left-4 font-mono text-[6px] md:text-[10px] tracking-widest uppercase text-brandBlue/30 bg-cream/80 px-1 md:px-2 py-0.5 md:py-1">Schema_0{i + 1}</span>
                             </div>
 
-                            <div className="mt-8 border-t border-brandBlue/10 pt-6">
-                                <h3 className="font-serif text-3xl text-brandBlue mb-3">{bp.title}</h3>
-                                <p className="font-sans text-brandBlue/70 font-light">{bp.desc}</p>
+                            <div className="mt-4 md:mt-8 border-t border-brandBlue/10 pt-3 md:pt-6">
+                                <h3 className="font-serif text-lg md:text-3xl text-brandBlue mb-2 md:mb-3 leading-tight md:leading-normal">{bp.title}</h3>
+                                <p className="font-sans text-[10px] md:text-base text-brandBlue/70 font-light leading-snug">{bp.desc}</p>
                             </div>
                         </div>
                     ))}
