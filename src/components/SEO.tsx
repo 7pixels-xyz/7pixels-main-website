@@ -20,7 +20,7 @@ export default function SEO({
             <meta name="description" content={description} />
             <meta name="theme-color" content="#fcfbfa" />
 
-            <link rel="icon" href="/favicon.ico" />
+            <link rel="icon" href="/favicon.png" />
             <link rel="apple-touch-icon" href="/apple-icon.png" />
             <link rel="manifest" href="/manifest.json" />
 
