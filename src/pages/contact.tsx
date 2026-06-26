@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "@/components/SEO";
 import Cursor from "@/components/Cursor";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -61,9 +61,7 @@ export default function Contact() {
 
     return (
         <>
-            <Head>
-                <title>Initialize Contact | 7pixels Digital Agency</title>
-            </Head>
+            <SEO title="Initialize Contact | 7pixels Digital Agency" description="Share your architectural constraints and system goals. We’ll design the blueprint." />
             <Cursor />
             <Header />
             <main ref={containerRef} className="min-h-[100dvh] relative font-sans w-full max-w-[100vw] overflow-x-hidden bg-cream pt-32 pb-24 border-b border-brandBlue/10">

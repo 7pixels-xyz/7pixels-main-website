@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "@/components/SEO";
 import Cursor from "@/components/Cursor";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -67,9 +67,7 @@ export default function Pricing() {
 
     return (
         <>
-            <Head>
-                <title>Pricing Matrix | 7pixels Digital Agency</title>
-            </Head>
+            <SEO title="Pricing Matrix | 7pixels Digital Agency" description="Transparent architecture. No hidden dependencies. View our custom digital ecosystem investment metrics." />
             <Cursor />
             <Header />
             <main ref={containerRef} className="min-h-[100dvh] relative font-sans w-full max-w-[100vw] overflow-x-hidden bg-cream pt-32 pb-24 border-b border-brandBlue/10">

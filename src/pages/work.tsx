@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "@/components/SEO";
 import Cursor from "@/components/Cursor";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -224,9 +224,7 @@ export default function Work() {
 
     return (
         <>
-            <Head>
-                <title>The Museum Library | 7pixels Digital Agency</title>
-            </Head>
+            <SEO title="The Museum Library | 7pixels Digital Agency" description="Explore our vast architectural portfolio spanning interior design, tech, and medical." />
             <Cursor />
             <Header />
             <main ref={containerRef} className="min-h-[100dvh] relative font-sans w-full max-w-[100vw] overflow-x-hidden bg-cream pt-32 pb-48 border-b border-brandBlue/10">
