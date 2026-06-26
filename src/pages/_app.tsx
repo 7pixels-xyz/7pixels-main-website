@@ -22,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
         });
 
         // Expose globally for Modal overlay locking
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (window as any).lenis = lenis;
 
         lenis.on("scroll", ScrollTrigger.update);
@@ -34,6 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
         return () => {
             lenis.destroy();
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             delete (window as any).lenis;
             gsap.ticker.remove(lenis.raf);
         };

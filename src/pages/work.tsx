@@ -111,14 +111,18 @@ const CategoryModal = ({ category, onClose }: { category: MuseumCategory, onClos
         }, modalRef);
 
         document.body.style.overflow = "hidden";
-        if (typeof window !== 'undefined' && (window as any).lenis) {
-            (window as any).lenis.stop();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const w = window as any;
+        if (typeof window !== 'undefined' && w.lenis) {
+            w.lenis.stop();
         }
 
         return () => {
             document.body.style.overflow = "auto";
-            if (typeof window !== 'undefined' && (window as any).lenis) {
-                (window as any).lenis.start();
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const w = window as any;
+            if (typeof window !== 'undefined' && w.lenis) {
+                w.lenis.start();
             }
             ctx.revert();
         };
