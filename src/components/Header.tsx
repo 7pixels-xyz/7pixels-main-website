@@ -2,9 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useAudio } from '@/context/AudioContext';
 
 export default function Header() {
     const headerRef = useRef<HTMLElement>(null);
+    const { isPlaying, togglePlay } = useAudio();
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
@@ -68,10 +70,29 @@ export default function Header() {
                 ))}
             </nav>
 
-            <div className="hidden sm:block">
-                <Link href="/contact" className="flex items-center justify-center h-8 px-6 rounded-full bg-brandBlue text-cream font-mono text-[10px] uppercase tracking-widest hover:bg-brandBlue/80 hover:scale-105 transition-all duration-300 shadow-md">
-                    Initialize
-                </Link>
+            <div className="flex items-center gap-4">
+                {/* Mobile Audio Control Widget */}
+                <button
+                    onClick={togglePlay}
+                    className="md:hidden flex items-center justify-center h-8 w-8 rounded-full border border-brandBlue/20 text-brandBlue hover:bg-brandBlue/5 transition-all duration-300"
+                >
+                    {isPlaying ? (
+                        <div className="flex gap-1 h-3 items-end">
+                            <div className="w-[1.5px] h-full bg-brandBlue animate-[pulse_0.8s_ease-in-out_infinite]"></div>
+                            <div className="w-[1.5px] h-[60%] bg-brandBlue animate-[pulse_1.2s_ease-in-out_infinite]"></div>
+                            <div className="w-[1.5px] h-[80%] bg-brandBlue animate-[pulse_1s_ease-in-out_infinite]"></div>
+                        </div>
+                    ) : (
+                        <svg className="w-3 h-3 ml-0.5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z" /></svg>
+                    )}
+                </button>
+
+                {/* Desktop Global CTA */}
+                <div className="hidden sm:block">
+                    <Link href="/contact" className="flex items-center justify-center h-8 px-6 rounded-full bg-brandBlue text-cream font-mono text-[10px] uppercase tracking-widest hover:bg-brandBlue/80 hover:scale-105 transition-all duration-300 shadow-md">
+                        Initialize
+                    </Link>
+                </div>
             </div>
         </header>
     );

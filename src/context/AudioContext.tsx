@@ -13,12 +13,16 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
 
     useEffect(() => {
         // Initialize the browser-safe audio object
-        const audio = new Audio('/boccherini.mp3');
+        const audio = new Audio('/music.m4a');
+        audio.preload = 'auto'; // Optimize for split-second load
         audio.loop = true;
         audio.volume = 0.3; // Elegant background volume
         audioRef.current = audio;
 
-        // Intelligent Autoplay Bypasser - starts music on absolute first native interaction
+        // Try aggressive immediate playback (Works if they arrived from an outbound link like Google)
+        audio.play().then(() => setIsPlaying(true)).catch(() => { });
+
+        // Intelligent Autoplay Bypasser - starts music on absolute first native interaction (Fallback for direct URL visits)
         const handleInteraction = () => {
             audio.play().then(() => setIsPlaying(true)).catch(() => {
                 // Autoplay safely blocked if interaction was extremely fast/ghosted
