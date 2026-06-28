@@ -44,8 +44,7 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
 
 export function getAllPosts(fields: string[] = []) {
     if (!fs.existsSync(contentDirectory)) {
-        // If the directory doesn't exist yet, we instantiate it gracefully
-        fs.mkdirSync(contentDirectory, { recursive: true });
+        // Safe return fallback without attempting to violate Vercel Read-Only container policies
         return [];
     }
 

@@ -1,7 +1,7 @@
 import { getAllPosts } from "@/lib/posts";
 import { GetServerSideProps } from "next";
 
-const URL = "https://7pixels.xyz";
+const URL = "https://www.7pixels.xyz";
 
 function generateSiteMap(posts: { slug: string }[]) {
   return `<?xml version="1.0" encoding="UTF-8"?>

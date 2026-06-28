@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # The core digital network architecture map for Google spiders
-Sitemap: https://7pixels.xyz/sitemap.xml
+Sitemap: https://www.7pixels.xyz/sitemap.xml
