@@ -20,7 +20,7 @@ export default function TrustEngine() {
             <div className="flex flex-col md:flex-row gap-8 px-4 md:px-24">
                 {testimonials.map((t, idx) => (
                     <div key={idx} className="flex-1 border border-brandBlue/10 bg-white/50 backdrop-blur-sm p-10 organic-border relative group hover:border-brandBlue/30 transition-colors duration-500">
-                        <div className="absolute top-8 left-8 text-6xl font-serif opacity-[0.05] group-hover:opacity-10 transition-opacity">"</div>
+                        <div className="absolute top-8 left-8 text-6xl font-serif opacity-[0.05] group-hover:opacity-10 transition-opacity">&quot;</div>
                         <p className="font-sans text-brandBlue/80 text-xl md:text-2xl font-light leading-relaxed mb-8 relative z-10 pt-4">
                             {t.quote}
                         </p>
