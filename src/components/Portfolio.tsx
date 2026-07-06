@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, useMotionValue } from 'motion/react';
 
 const works = [
     { id: 1, title: 'Canvas Space', format: 'Interior / Brutalism', image: '/portfolios/pankaj-sharma-canvas-space.jpg', url: 'https://pankaj-sharma-canvas-space.vercel.app/' },
@@ -13,6 +13,7 @@ const works = [
 export default function Portfolio() {
     const containerRef = useRef<HTMLDivElement>(null);
     const [dragConstraint, setDragConstraint] = useState(0);
+    const x = useMotionValue(0);
 
     useEffect(() => {
         const updateConstraints = () => {
@@ -43,13 +44,21 @@ export default function Portfolio() {
                 <motion.div
                     className="flex gap-8 md:gap-12 w-max pr-24"
                     drag="x"
+                    style={{ x }}
+                    onWheel={(e) => {
+                        if (e.shiftKey) {
+                            const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+                            const newX = x.get() - (delta * 1.5);
+                            x.set(Math.max(dragConstraint - 100, Math.min(0, newX)));
+                        }
+                    }}
                     dragConstraints={{ left: dragConstraint - 100, right: 0 }}
                     dragElastic={0.05}
                 >
                     {works.map((work, idx) => (
                         <motion.div
                             key={work.id}
-                            className={`w-[85vw] md:w-[45vw] lg:w-[35vw] h-[60vh] md:h-[65vh] flex flex-col justify-end p-8 bg-cream border border-brandBlue/20 relative flex-shrink-0 group overflow-hidden shadow-2xl shadow-brandBlue/5`}
+                            className={`w-[85vw] md:w-[45vw] lg:w-[35vw] aspect-[3/2] flex flex-col justify-end p-8 bg-cream border border-brandBlue/20 relative flex-shrink-0 group overflow-hidden shadow-2xl shadow-brandBlue/5`}
                             style={{
                                 borderRadius: idx % 2 === 0 ? '15px 125px 15px 125px/125px 15px 125px 15px' : '125px 15px 125px 15px/15px 125px 15px 125px',
                             }}
@@ -61,7 +70,7 @@ export default function Portfolio() {
                                 {work.image ? (
                                     <div className="w-full h-full relative">
                                         <div className="absolute inset-0 bg-brandBlue opacity-[0.15] group-hover:opacity-10 mix-blend-multiply transition-opacity duration-500 z-10 pointer-events-none"></div>
-                                        <img src={work.image} alt={work.title} className="w-full h-full object-cover" />
+                                        <img src={work.image} alt={work.title} className="w-full h-full object-cover" draggable={false} />
                                     </div>
                                 ) : (
                                     <div className="w-full h-full border border-brandBlue/10 flex items-center justify-center relative overflow-hidden bg-white/30 organic-border m-12">
