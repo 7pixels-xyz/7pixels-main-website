@@ -20,6 +20,11 @@ export default function Manifesto() {
                     end: '+=200%',
                     pin: true,
                     scrub: 1,
+                    snap: {
+                        snapTo: [0, 0.2, 0.6, 1], // Exactly targets the timeline states where text opacity is unconditionally 1.0
+                        duration: 0.5,
+                        ease: "power2.inOut"
+                    }
                 }
             });
 
