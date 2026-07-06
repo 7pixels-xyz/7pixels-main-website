@@ -43,11 +43,10 @@ const museumCategories: MuseumCategory[] = [
         tagline: "Trust-centric patient interfaces",
         color: "bg-[#e8e9e4]",
         projects: [
-            { id: "DNT-01", title: "Smile Architecture", desc: "Geometric layouts for premium regional clinics." },
-            { id: "DNT-02", title: "Dr. Luminous", desc: "Appointment-driven conversion funnel in sterile white mode." },
-            { id: "DNT-03", title: "Apex Dental", desc: "Orthodontic 3D modeling showcase for invisalign alternatives." },
-            { id: "DNT-04", title: "Pure Veneers", desc: "High contrast luxury dental cosmetic portfolio." },
-            { id: "DNT-05", title: "Nova Clinic", desc: "Responsive native app-like patient portal interface." }
+            { id: "DNT-01", title: "Zen Dental Studio", desc: "Evidence-Based Dentistry in the Bay Area. Comprehensive care within spaces designed for your well-being.", image: "/portfolios/zen.jpg", url: "https://www.zen.dentist/" },
+            { id: "DNT-02", title: "AO Dentistry", desc: "Best Dental Care and Advanced Dental Treatments. Dedicated to enhancing your oral health and smile.", image: "/portfolios/aodentistry.jpg", url: "https://www.aodentistry.com/" },
+            { id: "DNT-03", title: "Beehive Dental", desc: "Premier Oakville Dentist. Enjoy state-of-the-art dental care in a spa-like environment with Dr. Aly.", image: "/portfolios/beehivedental.jpg", url: "https://beehivedental.com/" },
+            { id: "DNT-04", title: "Canary Dental", desc: "Toronto Comprehensive Dental Care For All Ages. Experience Top-Quality services tailored to your needs.", image: "/portfolios/canarydental.jpg", url: "https://canarydental.ca/" }
         ]
     },
     {

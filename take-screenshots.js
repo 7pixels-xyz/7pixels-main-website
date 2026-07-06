@@ -3,11 +3,10 @@ const fs = require('fs');
 const path = require('path');
 
 const urls = [
-    'https://pankaj-sharma-canvas-space.vercel.app/',
-    'https://mansi-magic-interiors.vercel.app/',
-    'https://shashikant-gilt.vercel.app/',
-    'https://khadija-project-three.vercel.app/',
-    'https://interior-designer-2-rho.vercel.app/'
+    'https://www.zen.dentist/',
+    'https://www.aodentistry.com/',
+    'https://beehivedental.com/',
+    'https://canarydental.ca/'
 ];
 
 const outDir = path.join(__dirname, 'public', 'portfolios');
@@ -35,7 +34,7 @@ async function scrape() {
             const desc = await page.$eval('meta[name="description"]', el => el.content).catch(() => 'No description found');
             const ogTitle = await page.$eval('meta[property="og:title"]', el => el.content).catch(() => title);
 
-            const slug = url.split('//')[1].split('.')[0];
+            const slug = url.replace(/https?:\/\/(www\.)?/, '').split('.')[0];
             const screenshotPath = path.join(outDir, `${slug}.jpg`);
 
             await page.screenshot({ path: screenshotPath, quality: 80, type: 'jpeg' });
