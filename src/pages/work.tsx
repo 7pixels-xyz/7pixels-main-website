@@ -91,8 +91,61 @@ const museumCategories: MuseumCategory[] = [
     }
 ];
 
+const LiveProjectModal = ({ url, title, onClose }: { url: string; title: string; onClose: () => void }) => {
+    const modalRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo(modalRef.current,
+                { opacity: 0, scale: 0.98 },
+                { opacity: 1, scale: 1, duration: 0.8, ease: "expo.out" }
+            );
+        }, modalRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    const handleClose = () => {
+        gsap.to(modalRef.current, {
+            opacity: 0,
+            scale: 0.98,
+            duration: 0.6,
+            ease: "expo.inOut",
+            onComplete: onClose
+        });
+    };
+
+    return (
+        <div ref={modalRef} className="fixed inset-0 z-[99999] bg-[#080b12]/90 backdrop-blur-xl flex flex-col p-4 md:p-8 font-sans">
+            <div className="flex flex-col md:flex-row justify-between items-center mb-6 bg-white/5 border border-white/10 p-4 rounded-[4px_16px_4px_4px] shadow-lg gap-4">
+                <div className="flex items-center gap-3 w-full md:w-auto">
+                    <div className="w-2h-3 h-2 rounded-full bg-green-500 animate-pulse hidden md:block"></div>
+                    <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-cream/70 truncate max-w-[200px] md:max-w-md">PROTOCOL: {title}</span>
+                </div>
+                <div className="flex items-center gap-3 w-full md:w-auto overflow-x-auto justify-end">
+                    <a href={url} target="_blank" rel="noopener noreferrer" className="font-mono text-[9px] uppercase tracking-widest text-brandBlue bg-cream px-5 py-3 rounded-sm hover:bg-cream/90 transition-colors whitespace-nowrap shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                        Initialize New Tab
+                    </a>
+                    <button onClick={handleClose} className="font-mono text-[9px] uppercase tracking-widest text-cream bg-white/5 border border-white/10 px-5 py-3 rounded-sm hover:bg-white/10 transition-colors whitespace-nowrap">
+                        Terminate Link
+                    </button>
+                </div>
+            </div>
+
+            <div className="flex-1 w-full bg-[#080b12] rounded-[2px_24px_2px_2px] overflow-hidden shadow-2xl relative border border-white/10">
+                <div className="absolute inset-0 flex items-center justify-center bg-[#080b12] text-cream/40 font-mono text-[10px] uppercase tracking-widest z-0 flex-col gap-4">
+                    <div className="w-8 h-8 rounded-full border-t-2 border-white animate-spin"></div>
+                    Executing DOM Handshake...
+                </div>
+                <iframe src={url} className="absolute inset-0 w-full h-full border-none z-10 bg-white" title={title} />
+            </div>
+        </div>
+    );
+};
+
 const CategoryModal = ({ category, onClose }: { category: MuseumCategory, onClose: () => void }) => {
     const modalRef = useRef<HTMLDivElement>(null);
+    const [activeLiveProject, setActiveLiveProject] = useState<{ url: string, title: string } | null>(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -191,10 +244,17 @@ const CategoryModal = ({ category, onClose }: { category: MuseumCategory, onClos
                             <h3 className={`font-serif text-4xl md:text-5xl mb-4 ${category.isDark ? 'text-cream' : 'text-brandBlue'}`}>{proj.title}</h3>
                             <p className={`font-sans text-sm md:text-lg max-w-md leading-relaxed font-light mb-8 ${category.isDark ? 'text-cream/70' : 'text-brandBlue/70'}`}>{proj.desc}</p>
 
-                            <a href={proj.url || "#"} target="_blank" rel="noopener noreferrer" className={`font-mono text-[10px] uppercase tracking-[0.2em] relative overflow-hidden group/btn pb-2 ${category.isDark ? 'text-cream' : 'text-brandBlue'}`}>
-                                <span className="relative z-10">{proj.url ? 'Launch Live Protocol' : 'Access Archive Data'}</span>
-                                <div className={`absolute bottom-0 left-0 w-full h-[1px] transform origin-left transition-transform duration-300 group-hover/btn:scale-x-0 ${category.isDark ? 'bg-cream/50' : 'bg-brandBlue/50'}`}></div>
-                            </a>
+                            {proj.url ? (
+                                <button onClick={() => setActiveLiveProject({ url: proj.url!, title: proj.title })} className={`font-mono text-[10px] uppercase tracking-[0.2em] relative overflow-hidden group/btn pb-2 ${category.isDark ? 'text-cream' : 'text-brandBlue'}`}>
+                                    <span className="relative z-10">Launch Live Protocol</span>
+                                    <div className={`absolute bottom-0 left-0 w-full h-[1px] transform origin-left transition-transform duration-300 group-hover/btn:scale-x-0 ${category.isDark ? 'bg-cream/50' : 'bg-brandBlue/50'}`}></div>
+                                </button>
+                            ) : (
+                                <button className={`font-mono text-[10px] uppercase tracking-[0.2em] relative overflow-hidden group/btn pb-2 ${category.isDark ? 'text-cream' : 'text-brandBlue'}`}>
+                                    <span className="relative z-10">Access Archive Data</span>
+                                    <div className={`absolute bottom-0 left-0 w-full h-[1px] transform origin-left transition-transform duration-300 group-hover/btn:scale-x-0 ${category.isDark ? 'bg-cream/50' : 'bg-brandBlue/50'}`}></div>
+                                </button>
+                            )}
                         </div>
                     </div>
                 ))}
@@ -204,6 +264,15 @@ const CategoryModal = ({ category, onClose }: { category: MuseumCategory, onClos
             <div className="py-24 w-full flex justify-center">
                 <div className={`w-[1px] h-32 ${category.isDark ? 'bg-cream/20' : 'bg-brandBlue/20'}`}></div>
             </div>
+
+            {/* Live Connect Frame Overlay */}
+            {activeLiveProject && (
+                <LiveProjectModal
+                    url={activeLiveProject.url}
+                    title={activeLiveProject.title}
+                    onClose={() => setActiveLiveProject(null)}
+                />
+            )}
         </div>
     );
 };

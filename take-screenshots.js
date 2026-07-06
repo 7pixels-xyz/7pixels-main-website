@@ -28,6 +28,9 @@ async function scrape() {
         try {
             await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
 
+            console.log(`Waiting 6 seconds for pre-loaders...`);
+            await new Promise(r => setTimeout(r, 6000));
+
             const title = await page.title();
             const desc = await page.$eval('meta[name="description"]', el => el.content).catch(() => 'No description found');
             const ogTitle = await page.$eval('meta[property="og:title"]', el => el.content).catch(() => title);
