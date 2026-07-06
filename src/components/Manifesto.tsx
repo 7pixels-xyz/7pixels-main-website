@@ -59,16 +59,16 @@ export default function Manifesto() {
             </div>
 
             <div className="relative w-full max-w-5xl h-[40vh] flex justify-center items-center">
-                <h2 ref={text1Ref} className="absolute text-3xl md:text-6xl lg:text-7xl font-serif text-center leading-tight tracking-tight px-4 opacity-0">
-                    You didn&apos;t come here for a <span className="italic text-cream/50">template.</span>
+                <h2 ref={text1Ref} className="absolute text-3xl md:text-5xl lg:text-6xl font-serif text-center leading-tight tracking-tight px-4 opacity-0">
+                    A beautiful website means nothing if it doesn&apos;t generate <span className="italic text-cream/50">revenue.</span>
                 </h2>
 
-                <h2 ref={text2Ref} className="absolute text-3xl md:text-6xl lg:text-7xl font-serif text-center leading-tight tracking-tight px-4 opacity-0">
-                    You&apos;re tired of digital noise and <span className="italic text-cream/50">slow execution.</span>
+                <h2 ref={text2Ref} className="absolute text-3xl md:text-5xl lg:text-6xl font-serif text-center leading-tight tracking-tight px-4 opacity-0">
+                    We engineer high-conversion platforms that turn traffic into <span className="italic text-cream/50">actual clients.</span>
                 </h2>
 
-                <h2 ref={text3Ref} className="absolute text-3xl md:text-6xl lg:text-7xl font-serif text-center leading-tight tracking-tight px-4 opacity-0">
-                    You need an architecture that <span className="border-b border-cream pb-2">scales.</span>
+                <h2 ref={text3Ref} className="absolute text-3xl md:text-5xl lg:text-6xl font-serif text-center leading-tight tracking-tight px-4 opacity-0">
+                    Stop losing premium leads to competitors with better <span className="border-b border-cream pb-2">architecture.</span>
                 </h2>
             </div>
         </section>
