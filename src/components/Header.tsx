@@ -42,7 +42,7 @@ export default function Header() {
     return (
         <header
             ref={headerRef}
-            className="fixed top-4 md:top-6 left-1/2 transform -translate-x-1/2 z-[100] w-[95%] md:w-[60%] lg:w-[45%] h-14 md:h-16 bg-[#f5efe8]/95 backdrop-blur-xl border border-brandBlue/10 rounded-full shadow-[0_20px_40px_-10px_rgba(27,63,85,0.15)] flex flex-row items-center justify-between px-4 md:px-8"
+            className="fixed top-4 md:top-6 left-1/2 transform -translate-x-1/2 z-[100] w-[95%] md:w-[60%] lg:w-[45%] h-14 md:h-16 bg-white/10 backdrop-blur-xl border border-white/10 rounded-full shadow-[0_20px_40px_-5px_rgba(0,0,0,0.1)] flex flex-row items-center justify-between px-4 md:px-8"
         >
             <Link href="/" className="group flex items-center justify-center transition-transform duration-500 hover:scale-[1.03]">
                 <Image
@@ -50,7 +50,7 @@ export default function Header() {
                     alt="7pixels logo"
                     width={80}
                     height={20}
-                    className="object-contain mix-blend-multiply opacity-90 group-hover:opacity-100 transition-opacity"
+                    className="object-contain brightness-0 invert mix-blend-difference opacity-90 group-hover:opacity-100 transition-opacity"
                     priority
                 />
             </Link>
@@ -63,10 +63,10 @@ export default function Header() {
                     <Link
                         key={item.name}
                         href={item.href}
-                        className="font-mono text-xs uppercase tracking-[0.2em] text-brandBlue/70 hover:text-brandBlue transition-colors relative group"
+                        className="font-mono text-xs uppercase tracking-[0.2em] text-white mix-blend-difference hover:opacity-70 transition-opacity relative group"
                     >
                         {item.name}
-                        <span className="absolute -bottom-2 left-1/2 w-0 h-[1px] bg-brandBlue transform -translate-x-1/2 group-hover:w-full transition-all duration-300"></span>
+                        <span className="absolute -bottom-2 left-1/2 w-0 h-[1px] bg-white transform -translate-x-1/2 group-hover:w-full transition-all duration-300"></span>
                     </Link>
                 ))}
             </nav>
@@ -75,7 +75,7 @@ export default function Header() {
                 {/* Mobile Audio Control Widget */}
                 <button
                     onClick={togglePlay}
-                    className="md:hidden flex items-center justify-center h-8 w-8 rounded-full border border-brandBlue/20 text-brandBlue hover:bg-brandBlue/5 transition-all duration-300"
+                    className="md:hidden flex items-center justify-center h-8 w-8 rounded-full border border-white/20 text-white mix-blend-difference hover:bg-white/10 transition-all duration-300"
                 >
                     {isPlaying ? (
                         <Music className="w-3.5 h-3.5 animate-pulse" />
@@ -86,7 +86,7 @@ export default function Header() {
 
                 {/* Desktop Global CTA */}
                 <div className="hidden sm:block">
-                    <Link href="/contact" className="flex items-center justify-center h-8 px-6 rounded-full bg-brandBlue text-cream font-mono text-[10px] uppercase tracking-widest hover:bg-brandBlue/80 hover:scale-105 transition-all duration-300 shadow-md">
+                    <Link href="/contact" className="flex items-center justify-center h-8 px-6 rounded-full bg-white text-black mix-blend-difference font-mono text-[10px] uppercase tracking-widest hover:scale-105 transition-all duration-300 shadow-md">
                         Initialize
                     </Link>
                 </div>
