@@ -42,7 +42,7 @@ export default function Header() {
     return (
         <header
             ref={headerRef}
-            className="fixed top-4 md:top-6 left-1/2 transform -translate-x-1/2 z-[100] w-[95%] md:w-[60%] lg:w-[45%] h-14 md:h-16 bg-cream/70 backdrop-blur-xl border border-brandBlue/10 rounded-full shadow-[0_20px_40px_-10px_rgba(27,63,85,0.15)] flex flex-row items-center justify-between px-4 md:px-8"
+            className="fixed top-4 md:top-6 left-1/2 transform -translate-x-1/2 z-[100] w-[95%] md:w-[60%] lg:w-[45%] h-14 md:h-16 bg-cream/95 backdrop-blur-xl border border-brandBlue/10 rounded-full shadow-[0_20px_40px_-10px_rgba(27,63,85,0.15)] flex flex-row items-center justify-between px-4 md:px-8"
         >
             <Link href="/" className="group flex items-center justify-center transition-transform duration-500 hover:scale-[1.03]">
                 <Image
