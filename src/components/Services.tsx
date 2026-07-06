@@ -3,10 +3,10 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 const services = [
-    { id: 1, title: 'Blueprint / Launch', desc: 'Architecting the flawless digital foundation. Structuring data and laying down the first components.', icon: '\u25A1' },
-    { id: 2, title: 'Scale / Grow', desc: 'Expanding server limits and brand reach. We systematically construct pipelines for user acquisition.', icon: '\u25B3' },
-    { id: 3, title: 'Refactor / Transform', desc: 'Deconstructing legacy systems and rebuilding them into high-performance, modern frameworks.', icon: '\u25CB' },
-    { id: 4, title: 'Iterate / Refine', desc: 'Deploying continuous integration. Polishing micro-interactions and reinforcing security protocols.', icon: '\u25CA' },
+    { id: 1, title: 'Plan / Strategize', desc: 'Before building anything, we study your business goals to map out a clear path that turns your visitors into paying clients.', icon: '\u25A1' },
+    { id: 2, title: 'Build / Launch', desc: 'We construct your platform entirely from scratch. No slow templates—just lightning-fast, premium architecture designed for growth.', icon: '\u25B3' },
+    { id: 3, title: 'Refine / Convert', desc: 'We relentlessly test and polish every detail on your site to ensure it creates a stunning, frictionless experience for your users.', icon: '\u25CB' },
+    { id: 4, title: 'Scale / Support', desc: 'We do not just launch a website and vanish. We actively maintain, protect, and optimize your platform as your business expands.', icon: '\u25CA' },
 ];
 
 export default function Services() {
