@@ -54,7 +54,7 @@ export default function Manifesto() {
     }, []);
 
     return (
-        <section ref={containerRef} className="h-screen bg-[#1c2226] text-cream relative flex flex-col justify-center items-center px-4 md:px-24 overflow-hidden">
+        <section ref={containerRef} className="min-h-[50vh] md:h-screen w-full bg-[#1c2226] text-cream relative flex flex-col justify-center items-center px-4 md:px-24 overflow-hidden py-24 md:py-0">
             {/* Ambient Background Grid */}
             <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] [background-size:40px_40px] pointer-events-none" />
 
