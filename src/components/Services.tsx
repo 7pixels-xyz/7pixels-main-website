@@ -29,7 +29,9 @@ export default function Services() {
                     pin: true,
                     scrub: 1,
                     snap: 1 / (sections.length - 1),
-                    end: () => "+=" + scrollWrapperRef.current?.offsetWidth
+                    // Compressed scroll timeline by 60% relative to container width
+                    // resulting in radically increased horizontal traversal velocity per wheel tick
+                    end: () => "+=" + (scrollWrapperRef.current ? scrollWrapperRef.current.offsetWidth * 0.4 : 3000)
                 }
             });
 
