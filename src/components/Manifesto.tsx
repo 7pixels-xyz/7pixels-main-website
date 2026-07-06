@@ -17,7 +17,7 @@ export default function Manifesto() {
                 scrollTrigger: {
                     trigger: containerRef.current,
                     start: 'top top',
-                    end: '+=200%',
+                    end: '+=80%',
                     pin: true,
                     scrub: 1,
                     snap: {
