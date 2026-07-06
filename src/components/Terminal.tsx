@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
 
 const messages = [
     { threshold: 0, text: "SYSTEM: Connection established. Initializing 7pixels." },

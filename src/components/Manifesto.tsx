@@ -60,11 +60,11 @@ export default function Manifesto() {
 
             <div className="relative w-full max-w-5xl h-[40vh] flex justify-center items-center">
                 <h2 ref={text1Ref} className="absolute text-3xl md:text-6xl lg:text-7xl font-serif text-center leading-tight tracking-tight px-4 opacity-0">
-                    You didn't come here for a <span className="italic text-cream/50">template.</span>
+                    You didn&apos;t come here for a <span className="italic text-cream/50">template.</span>
                 </h2>
 
                 <h2 ref={text2Ref} className="absolute text-3xl md:text-6xl lg:text-7xl font-serif text-center leading-tight tracking-tight px-4 opacity-0">
-                    You're tired of digital noise and <span className="italic text-cream/50">slow execution.</span>
+                    You&apos;re tired of digital noise and <span className="italic text-cream/50">slow execution.</span>
                 </h2>
 
                 <h2 ref={text3Ref} className="absolute text-3xl md:text-6xl lg:text-7xl font-serif text-center leading-tight tracking-tight px-4 opacity-0">
