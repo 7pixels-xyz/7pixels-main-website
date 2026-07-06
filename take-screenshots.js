@@ -3,10 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 const urls = [
-    'https://www.zen.dentist/',
-    'https://www.aodentistry.com/',
-    'https://beehivedental.com/',
-    'https://canarydental.ca/'
+    'https://apextattooz.com/',
+    'https://delhitattoostudio.com/'
 ];
 
 const outDir = path.join(__dirname, 'public', 'portfolios');

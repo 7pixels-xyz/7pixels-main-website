@@ -56,11 +56,8 @@ const museumCategories: MuseumCategory[] = [
         color: "bg-[#1c2226]",
         isDark: true,
         projects: [
-            { id: "TAT-01", title: "Ink & Iron", desc: "Dark-mode visual portfolio bridging physical art to digital." },
-            { id: "TAT-02", title: "Void Studio", desc: "Pitch black aesthetic with scarlet hover states." },
-            { id: "TAT-03", title: "Sacred Geometry", desc: "Line-art driven architectural SVG animations." },
-            { id: "TAT-04", title: "Needle & Thread", desc: "Grunge-inspired WebGL texture masking." },
-            { id: "TAT-05", title: "Blackwork Society", desc: "Minimalist grid of high-fidelity stencil scans." }
+            { id: "TAT-01", title: "Apex Tattooz", desc: "Best tattoo shop in Delhi NCR. Custom tattoos, minimalist ink & cover-up by certified artists.", image: "/portfolios/apextattooz.jpg", url: "https://apextattooz.com/" },
+            { id: "TAT-02", title: "NA Tattoo Studio", desc: "One of the finest Professional Tattoo Studios in New Delhi. The largest variety of Quality Designs using safe, long-lasting ink.", image: "/portfolios/delhitattoostudio.jpg", url: "https://delhitattoostudio.com/" }
         ]
     },
     {
