@@ -3,6 +3,7 @@ import Cursor from "@/components/Cursor";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import React, { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import gsap from "gsap";
 
 type ProjectInfo = {
@@ -282,13 +283,14 @@ const CategoryModal = ({ category, onClose }: { category: MuseumCategory, onClos
                 <div className={`w-[1px] h-32 ${category.isDark ? 'bg-cream/20' : 'bg-brandBlue/20'}`}></div>
             </div>
 
-            {/* Live Connect Frame Overlay */}
-            {activeLiveProject && (
+            {/* Live Connect Frame Overlay securely teleported to document.body via Portals to bypass GSAP transform CSS containment */}
+            {activeLiveProject && typeof document !== 'undefined' && createPortal(
                 <LiveProjectModal
                     url={activeLiveProject.url}
                     title={activeLiveProject.title}
                     onClose={() => setActiveLiveProject(null)}
-                />
+                />,
+                document.body
             )}
         </div>
     );
