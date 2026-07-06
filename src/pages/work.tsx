@@ -116,25 +116,25 @@ const LiveProjectModal = ({ url, title, onClose }: { url: string; title: string;
     };
 
     return (
-        <div ref={modalRef} className="fixed inset-0 z-[99999] bg-[#080b12]/90 backdrop-blur-xl flex flex-col p-4 md:p-8 font-sans">
-            <div className="flex flex-col md:flex-row justify-between items-center mb-6 bg-white/5 border border-white/10 p-4 rounded-[4px_16px_4px_4px] shadow-lg gap-4">
+        <div ref={modalRef} className="fixed inset-0 z-[99999] bg-cream/95 backdrop-blur-xl flex flex-col p-4 md:p-8 font-sans border-brandBlue/10">
+            <div className="flex flex-col md:flex-row justify-between items-center mb-6 bg-white/40 border border-brandBlue/10 p-4 rounded-2xl shadow-sm gap-4">
                 <div className="flex items-center gap-3 w-full md:w-auto">
-                    <div className="w-2h-3 h-2 rounded-full bg-green-500 animate-pulse hidden md:block"></div>
-                    <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-cream/70 truncate max-w-[200px] md:max-w-md">PROTOCOL: {title}</span>
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse hidden md:block"></div>
+                    <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-brandBlue/80 truncate max-w-[200px] md:max-w-md">PROTOCOL: {title}</span>
                 </div>
                 <div className="flex items-center gap-3 w-full md:w-auto overflow-x-auto justify-end">
-                    <a href={url} target="_blank" rel="noopener noreferrer" className="font-mono text-[9px] uppercase tracking-widest text-brandBlue bg-cream px-5 py-3 rounded-sm hover:bg-cream/90 transition-colors whitespace-nowrap shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                    <a href={url} target="_blank" rel="noopener noreferrer" className="font-mono text-[9px] uppercase tracking-widest text-cream bg-brandBlue px-6 py-3 rounded-full hover:bg-brandBlue/90 hover:shadow-xl transition-all whitespace-nowrap">
                         Initialize New Tab
                     </a>
-                    <button onClick={handleClose} className="font-mono text-[9px] uppercase tracking-widest text-cream bg-white/5 border border-white/10 px-5 py-3 rounded-sm hover:bg-white/10 transition-colors whitespace-nowrap">
+                    <button onClick={handleClose} className="font-mono text-[9px] uppercase tracking-widest text-brandBlue bg-transparent border border-brandBlue/20 px-6 py-3 rounded-full hover:bg-brandBlue/5 transition-all whitespace-nowrap">
                         Terminate Link
                     </button>
                 </div>
             </div>
 
-            <div className="flex-1 w-full bg-[#080b12] rounded-[2px_24px_2px_2px] overflow-hidden shadow-2xl relative border border-white/10">
-                <div className="absolute inset-0 flex items-center justify-center bg-[#080b12] text-cream/40 font-mono text-[10px] uppercase tracking-widest z-0 flex-col gap-4">
-                    <div className="w-8 h-8 rounded-full border-t-2 border-white animate-spin"></div>
+            <div className="flex-1 w-full bg-white rounded-2xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(27,63,85,0.15)] relative border border-brandBlue/10">
+                <div className="absolute inset-0 flex items-center justify-center bg-cream/50 text-brandBlue/40 font-mono text-[10px] uppercase tracking-widest z-0 flex-col gap-4">
+                    <div className="w-8 h-8 rounded-full border-t-2 border-brandBlue animate-spin"></div>
                     Executing DOM Handshake...
                 </div>
                 <iframe src={url} className="absolute inset-0 w-full h-full border-none z-10 bg-white" title={title} />
@@ -222,14 +222,29 @@ const CategoryModal = ({ category, onClose }: { category: MuseumCategory, onClos
                         {/* Decorative wire */}
                         <div className={`hidden md:block absolute left-[45%] top-1/2 w-32 h-[1px] transform -translate-y-1/2 ${category.isDark ? 'bg-cream/10' : 'bg-brandBlue/10'}`}></div>
 
-                        <div className={`w-full md:w-1/2 aspect-[4/3] border organic-border relative overflow-hidden shadow-2xl flex items-center justify-center p-8 
-                            ${category.isDark ? 'border-cream/20 bg-black/20' : 'border-brandBlue/20 bg-white/20'}`}>
+                        <div
+                            className={`w-full md:w-1/2 aspect-[4/3] border organic-border relative overflow-hidden shadow-2xl flex items-center justify-center p-8 cursor-pointer
+                            ${category.isDark ? 'border-cream/20 bg-black/20' : 'border-brandBlue/20 bg-white/20'}`}
+                            onClick={() => proj.url ? setActiveLiveProject({ url: proj.url, title: proj.title }) : null}
+                        >
 
                             {/* Inner architectural skeleton */}
                             <div className={`absolute inset-0 m-4 border pointer-events-none transition-transform duration-1000 group-hover:scale-95 z-20 ${category.isDark ? 'border-cream/20' : 'border-brandBlue/30'}`}></div>
 
                             {proj.image ? (
-                                <img src={proj.image} alt={proj.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100 mix-blend-multiply dark:mix-blend-normal" />
+                                <>
+                                    <img src={proj.image} alt={proj.title} className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 mix-blend-multiply dark:mix-blend-normal ${proj.url ? 'group-hover:opacity-40 group-hover:blur-[2px]' : 'group-hover:opacity-100'}`} />
+                                    {proj.url && (
+                                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30">
+                                            <div className={`font-mono text-[10px] uppercase tracking-widest px-8 py-4 rounded-full shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-2 ${category.isDark ? 'bg-cream text-[#1c2226]' : 'bg-brandBlue text-cream'}`}>
+                                                Experience Live
+                                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    )}
+                                </>
                             ) : (
                                 <span className={`font-serif text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-center relative z-10 transition-transform duration-700 group-hover:scale-105 ${category.isDark ? 'text-cream/20' : 'text-brandBlue/20'}`}>
                                     {proj.title}
@@ -245,12 +260,14 @@ const CategoryModal = ({ category, onClose }: { category: MuseumCategory, onClos
                             <p className={`font-sans text-sm md:text-lg max-w-md leading-relaxed font-light mb-8 ${category.isDark ? 'text-cream/70' : 'text-brandBlue/70'}`}>{proj.desc}</p>
 
                             {proj.url ? (
-                                <button onClick={() => setActiveLiveProject({ url: proj.url!, title: proj.title })} className={`font-mono text-[10px] uppercase tracking-[0.2em] relative overflow-hidden group/btn pb-2 ${category.isDark ? 'text-cream' : 'text-brandBlue'}`}>
-                                    <span className="relative z-10">Launch Live Protocol</span>
-                                    <div className={`absolute bottom-0 left-0 w-full h-[1px] transform origin-left transition-transform duration-300 group-hover/btn:scale-x-0 ${category.isDark ? 'bg-cream/50' : 'bg-brandBlue/50'}`}></div>
+                                <button onClick={() => setActiveLiveProject({ url: proj.url!, title: proj.title })} className={`mt-2 font-mono text-[10px] uppercase tracking-[0.2em] px-7 py-3.5 rounded-full transition-all duration-300 shadow-sm hover:shadow-lg flex items-center gap-3 ${category.isDark ? 'bg-cream text-[#1c2226] hover:bg-white' : 'bg-brandBlue text-cream hover:opacity-90'}`}>
+                                    <span>Launch Live Protocol</span>
+                                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
                                 </button>
                             ) : (
-                                <button className={`font-mono text-[10px] uppercase tracking-[0.2em] relative overflow-hidden group/btn pb-2 ${category.isDark ? 'text-cream' : 'text-brandBlue'}`}>
+                                <button className={`font-mono text-[10px] uppercase tracking-[0.2em] relative overflow-hidden group/btn pb-2 mt-4 ${category.isDark ? 'text-cream' : 'text-brandBlue'}`}>
                                     <span className="relative z-10">Access Archive Data</span>
                                     <div className={`absolute bottom-0 left-0 w-full h-[1px] transform origin-left transition-transform duration-300 group-hover/btn:scale-x-0 ${category.isDark ? 'bg-cream/50' : 'bg-brandBlue/50'}`}></div>
                                 </button>
