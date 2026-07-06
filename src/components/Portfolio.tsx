@@ -2,11 +2,12 @@ import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 
 const works = [
-    { id: 1, title: 'Velocity Studio', format: 'Web App / Next.js' },
-    { id: 2, title: 'The Daily Grind', format: 'Marketing Site / GSAP' },
-    { id: 3, title: 'Botanical Echoes', format: 'E-Commerce / Shopify Headless' },
-    { id: 4, title: 'Silent Archive', format: 'Creative Direction / Architecture' },
-    { id: 5, title: 'Apex Finance', format: 'Fintech Dashboard / React' },
+    { id: 1, title: 'Canvas Space', format: 'Interior / Brutalism', image: '/portfolios/pankaj-sharma-canvas-space.jpg', url: 'https://pankaj-sharma-canvas-space.vercel.app/' },
+    { id: 2, title: 'Magical Interiors', format: 'Interior / Soft Minimalism', image: '/portfolios/mansi-magic-interiors.jpg', url: 'https://mansi-magic-interiors.vercel.app/' },
+    { id: 3, title: 'TAG Studio', format: 'Interior / Space Planning', image: '/portfolios/shashikant-gilt.jpg', url: 'https://shashikant-gilt.vercel.app/' },
+    { id: 4, title: 'Zen Dental Studio', format: 'Clinical / Evidence-Based', image: '/portfolios/zen.jpg', url: 'https://www.zen.dentist/' },
+    { id: 5, title: 'AO Dentistry', format: 'Clinical / Advanced Care', image: '/portfolios/aodentistry.jpg', url: 'https://www.aodentistry.com/' },
+    { id: 6, title: 'Apex Tattooz', format: 'Tattoo / Custom Inking', image: '/portfolios/apextattooz.jpg', url: 'https://apextattooz.com/' },
 ];
 
 export default function Portfolio() {
@@ -55,15 +56,22 @@ export default function Portfolio() {
                             whileHover={{ y: -10 }}
                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
                         >
-                            {/* Abstract Placeholder for actual projects */}
-                            <div className="absolute inset-0 bg-cream flex items-center justify-center p-12 transition-transform duration-700 ease-in-out group-hover:scale-105">
-                                <div className="w-full h-full border border-brandBlue/10 flex items-center justify-center relative overflow-hidden bg-white/30 organic-border">
-                                    <div className="absolute inset-x-0 top-1/2 h-[1px] bg-brandBlue/10"></div>
-                                    <div className="absolute inset-y-0 left-1/2 w-[1px] bg-brandBlue/10"></div>
-                                    <span className="font-mono text-brandBlue/20 text-[10px] tracking-[0.3em] uppercase bg-cream px-3 py-1 z-10 block border border-brandBlue/10">
-                                        Img_Src_{idx + 1}.avif
-                                    </span>
-                                </div>
+                            {/* Native Image Integration */}
+                            <div className="absolute inset-0 bg-cream flex items-center justify-center p-0 transition-transform duration-1000 ease-in-out group-hover:scale-110">
+                                {work.image ? (
+                                    <div className="w-full h-full relative">
+                                        <div className="absolute inset-0 bg-brandBlue opacity-[0.15] group-hover:opacity-10 mix-blend-multiply transition-opacity duration-500 z-10 pointer-events-none"></div>
+                                        <img src={work.image} alt={work.title} className="w-full h-full object-cover" />
+                                    </div>
+                                ) : (
+                                    <div className="w-full h-full border border-brandBlue/10 flex items-center justify-center relative overflow-hidden bg-white/30 organic-border m-12">
+                                        <div className="absolute inset-x-0 top-1/2 h-[1px] bg-brandBlue/10"></div>
+                                        <div className="absolute inset-y-0 left-1/2 w-[1px] bg-brandBlue/10"></div>
+                                        <span className="font-mono text-brandBlue/20 text-[10px] tracking-[0.3em] uppercase bg-cream px-3 py-1 z-10 block border border-brandBlue/10">
+                                            Img_Src_{idx + 1}.avif
+                                        </span>
+                                    </div>
+                                )}
                             </div>
 
                             {/* Text overlay bottom */}
