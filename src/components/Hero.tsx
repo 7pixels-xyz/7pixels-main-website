@@ -284,30 +284,8 @@ export default function Hero() {
                 </div>
             </div>
 
-            {/* Marquee System Status Trust Bar */}
-            <div className="absolute bottom-0 left-0 w-full h-8 bg-[#1b3f55] border-t border-brandBlue flex items-center overflow-hidden z-40">
-                <motion.div
-                    className="flex whitespace-nowrap text-cream/80 font-mono text-[10px] uppercase tracking-[0.3em]"
-                    animate={{ x: ["0%", "-50%"] }}
-                    transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
-                >
-                    <div className="flex gap-16 px-8 items-center">
-                        <span className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div> SYSTEM STATUS: ONLINE</span>
-                        <span>AVG LATENCY: 24ms</span>
-                        <span>DEPLOYMENTS: 100+ CRAFTED</span>
-                        <span>QUALITY: ZERO TEMPLATES</span>
-                        <span>RUNTIME: FLAWLESS</span>
-                    </div>
-                    {/* Duplicate for seamless infinite loop */}
-                    <div className="flex gap-16 px-8 items-center">
-                        <span className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div> SYSTEM STATUS: ONLINE</span>
-                        <span>AVG LATENCY: 24ms</span>
-                        <span>DEPLOYMENTS: 100+ CRAFTED</span>
-                        <span>QUALITY: ZERO TEMPLATES</span>
-                        <span>RUNTIME: FLAWLESS</span>
-                    </div>
-                </motion.div>
-            </div>
+            {/* Gradient Blend to Next Section */}
+            <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-b from-transparent to-[#1c2226] pointer-events-none z-40"></div>
 
         </section>
     );
