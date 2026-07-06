@@ -9,6 +9,8 @@ type ProjectInfo = {
     id: string;
     title: string;
     desc: string;
+    image?: string;
+    url?: string;
 };
 
 type MuseumCategory = {
@@ -27,11 +29,11 @@ const museumCategories: MuseumCategory[] = [
         tagline: "Spatial aesthetics & geometric layouts",
         color: "bg-[#e5e1dc]",
         projects: [
-            { id: "INT-01", title: "Urban Nest", desc: "Cinematic architecture portfolio with WebGL depth-sorting layers." },
-            { id: "INT-02", title: "Aura Dynamics", desc: "High-end spatial layout rendering engine capturing minimalist scale." },
-            { id: "INT-03", title: "Studio V", desc: "Brutalist concrete-inspired layout for a premium NY agency." },
-            { id: "INT-04", title: "Lumina Homes", desc: "Light-driven interaction models mapped to 3D interiors." },
-            { id: "INT-05", title: "Echo Architects", desc: "Horizontal scroll matrix depicting physical floorplans." }
+            { id: "INT-01", title: "Canvas Space", desc: "Premium brutalist architectural studio specializing in high-end concept design & spatial planning.", image: "/portfolios/pankaj-sharma-canvas-space.jpg", url: "https://pankaj-sharma-canvas-space.vercel.app/" },
+            { id: "INT-02", title: "Magical Interiors", desc: "Pune-based luxury studio crafting timeless spaces with soft minimalism and architectural elegance.", image: "/portfolios/mansi-magic-interiors.jpg", url: "https://mansi-magic-interiors.vercel.app/" },
+            { id: "INT-03", title: "TAG Studio", desc: "Expert space planning for residential and commercial layouts spanning across Pune & Nashik.", image: "/portfolios/shashikant-gilt.jpg", url: "https://shashikant-gilt.vercel.app/" },
+            { id: "INT-04", title: "Urban Nest", desc: "Cinematic architecture portfolio bridging where beauty meets purpose via modern design.", image: "/portfolios/khadija-project-three.jpg", url: "https://khadija-project-three.vercel.app/" },
+            { id: "INT-05", title: "Designs by Shouray", desc: "Luxury studio creating timeless, refined interiors that blend comfort, elegance, and modern living.", image: "/portfolios/interior-designer-2-rho.jpg", url: "https://interior-designer-2-rho.vercel.app/" }
         ]
     },
     {
@@ -171,11 +173,15 @@ const CategoryModal = ({ category, onClose }: { category: MuseumCategory, onClos
                             ${category.isDark ? 'border-cream/20 bg-black/20' : 'border-brandBlue/20 bg-white/20'}`}>
 
                             {/* Inner architectural skeleton */}
-                            <div className={`absolute inset-0 m-4 border pointer-events-none transition-transform duration-1000 group-hover:scale-95 ${category.isDark ? 'border-cream/10' : 'border-brandBlue/10'}`}></div>
+                            <div className={`absolute inset-0 m-4 border pointer-events-none transition-transform duration-1000 group-hover:scale-95 z-20 ${category.isDark ? 'border-cream/20' : 'border-brandBlue/30'}`}></div>
 
-                            <span className={`font-serif text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-center relative z-10 transition-transform duration-700 group-hover:scale-105 ${category.isDark ? 'text-cream/20' : 'text-brandBlue/20'}`}>
-                                {proj.title}
-                            </span>
+                            {proj.image ? (
+                                <img src={proj.image} alt={proj.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100 mix-blend-multiply dark:mix-blend-normal" />
+                            ) : (
+                                <span className={`font-serif text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-center relative z-10 transition-transform duration-700 group-hover:scale-105 ${category.isDark ? 'text-cream/20' : 'text-brandBlue/20'}`}>
+                                    {proj.title}
+                                </span>
+                            )}
                         </div>
 
                         <div className="w-full md:w-1/2 flex flex-col items-start relative z-10">
@@ -185,10 +191,10 @@ const CategoryModal = ({ category, onClose }: { category: MuseumCategory, onClos
                             <h3 className={`font-serif text-4xl md:text-5xl mb-4 ${category.isDark ? 'text-cream' : 'text-brandBlue'}`}>{proj.title}</h3>
                             <p className={`font-sans text-sm md:text-lg max-w-md leading-relaxed font-light mb-8 ${category.isDark ? 'text-cream/70' : 'text-brandBlue/70'}`}>{proj.desc}</p>
 
-                            <button className={`font-mono text-[10px] uppercase tracking-[0.2em] relative overflow-hidden group/btn pb-2 ${category.isDark ? 'text-cream' : 'text-brandBlue'}`}>
-                                <span className="relative z-10">Access Archive Data</span>
+                            <a href={proj.url || "#"} target="_blank" rel="noopener noreferrer" className={`font-mono text-[10px] uppercase tracking-[0.2em] relative overflow-hidden group/btn pb-2 ${category.isDark ? 'text-cream' : 'text-brandBlue'}`}>
+                                <span className="relative z-10">{proj.url ? 'Launch Live Protocol' : 'Access Archive Data'}</span>
                                 <div className={`absolute bottom-0 left-0 w-full h-[1px] transform origin-left transition-transform duration-300 group-hover/btn:scale-x-0 ${category.isDark ? 'bg-cream/50' : 'bg-brandBlue/50'}`}></div>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 ))}
